@@ -1,0 +1,40 @@
+//
+//  PrefixHeader.pch
+//  MHShortVideo
+//
+//  Created by 马浩 on 2018/11/13.
+//  Copyright © 2018年 mh. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "Header.h"
+
+//iPhone X判断
+#define K_IS_IphoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436),[UIScreen mainScreen].currentMode.size) : NO)
+
+//尺寸
+#define Screen_WIDTH [UIScreen mainScreen].bounds.size.width
+#define Screen_HEIGTH [UIScreen mainScreen].bounds.size.height
+#define Width(i) i*(Screen_WIDTH/375)
+
+#define NavHeight      (K_IS_IphoneX ? 88.0 : 64.0)    //导航栏高度
+#define TabBarHeight      (K_IS_IphoneX ? 83.0 : 49.0)    //tabbar高度
+#define K_StatusHeight  (K_IS_IphoneX ? 44.0 : 20.0)   //状态栏高度
+#define k_bottom_margin    (K_IS_IphoneX ? 34.0 : 0.0)   //底部安全区域高度
+
+//打印
+#define DLog(fmt, ...) NSLog((fmt), ##__VA_ARGS__);
+//#define DLog(...);
+
+//颜色
+#define HexRGBAlpha(rgbValue,a) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:(a)]
+#define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
+#define RGB(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
+
+//字体
+#define FONT(x)        [UIFont systemFontOfSize:Width(x)]
+#define BOLD_FONT(x)       [UIFont boldSystemFontOfSize:Width(x)]
+
+#endif /* PrefixHeader_pch */
